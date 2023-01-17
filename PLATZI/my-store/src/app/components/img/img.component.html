@@ -1,0 +1,5 @@
+<img [src]="imgSrc" width="200" *ngIf="imgSrc; else elseImg;"  alt="">
+<ng-template #elseImg>
+  <p>{{defaultValue}}</p>
+</ng-template>
+
