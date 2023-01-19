@@ -14,6 +14,7 @@ export class ProductsComponent {
   myShoppingCart: Product[] = [];
   total = 0;
   products: Product[] = [];
+  today = new Date();
 
   constructor(
     private myStoreService:StoreService,
