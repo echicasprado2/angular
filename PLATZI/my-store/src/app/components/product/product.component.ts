@@ -13,7 +13,7 @@ export class ProductComponent {
     title: '',
     image: '',
     price: 0,
-    descripcion: '',
+    description: '',
     category: ''
   }
 
