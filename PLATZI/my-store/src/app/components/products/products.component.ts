@@ -24,7 +24,9 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.myProductService.getAllProducts()
-    .subscribe(data => console.log(data));
+    .subscribe(data => {
+      this.products = data;
+    });
   }
 
   onAddToShoppingCart(product: Product) {
