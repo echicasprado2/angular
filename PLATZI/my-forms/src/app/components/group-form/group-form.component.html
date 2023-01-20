@@ -1,21 +1,25 @@
+<p>usar angular material: ng add @angular/material</p>
+<hr>
 <form [formGroup]="formGroup" (ngSubmit)="save($event)">
   <div formGroupName="fullname">
-    <p>
-      Text: {{nameField?.value}} {{nameField?.valid}}
-      <input
-      [class.is-valid]="isNameFieldInValid"
-      [class.is-invalid]="isNameFieldInValid"
-      type="text"
-      formControlName="name">
-    </p>
-    <div class="messages" [class.active]="isNameFieldInValid">
-      <p>
-        <strong *ngIf="nameField?.touched && nameField?.hasError('required')">Este campo es requerido</strong>
-      </p>
-      <p>
-        <strong *ngIf="nameField?.touched && nameField?.hasError('maxlength')">Maximo 10 caracteres</strong>
-      </p>
-    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Name: {{nameField?.value}}</mat-label>
+      <br>
+      <input matInput type="text" formControlName="name">
+      <mat-icon matSuffix *ngIf="nameField?.valid">done</mat-icon>
+      <mat-icon matSuffix *ngIf="nameField?.invalid">close</mat-icon>
+      <br>
+      <div class="messages" [class.active]="isNameFieldInValid">
+        <mat-error *ngIf="nameField?.touched && nameField?.invalid">
+          <ng-container *ngIf="nameField?.hasError('required')">
+            El campo nombre es requerido
+          </ng-container>
+          <ng-container *ngIf="nameField?.hasError('maxlength')">
+            Maximo 10 caracteres
+          </ng-container>
+        </mat-error>
+      </div>
+    </mat-form-field>
     <p>
       Text: {{lastField?.value}} {{lastField?.valid}}
       <input

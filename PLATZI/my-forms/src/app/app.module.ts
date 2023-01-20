@@ -6,6 +6,12 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BasicFormComponent } from './components/basic-form/basic-form.component';
 import { GroupFormComponent } from './components/group-form/group-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,11 @@ import { GroupFormComponent } from './components/group-form/group-form.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
