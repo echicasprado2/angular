@@ -1,20 +1,37 @@
 <form [formGroup]="formGroup" (ngSubmit)="save($event)">
-  <p>
-    Text: {{nameField?.value}} {{nameField?.valid}}
-    <input
-    [class.is-valid]="isNameFieldInValid"
-    [class.is-invalid]="isNameFieldInValid"
-    type="text"
-    formControlName="name">
-  </p>
-  <div class="messages" [class.active]="isNameFieldInValid">
+  <div formGroupName="fullname"]>
     <p>
-      <strong *ngIf="nameField?.touched && nameField?.hasError('required')">Este campo es requerido</strong>
+      Text: {{nameField?.value}} {{nameField?.valid}}
+      <input
+      [class.is-valid]="isNameFieldInValid"
+      [class.is-invalid]="isNameFieldInValid"
+      type="text"
+      formControlName="name">
     </p>
+    <div class="messages" [class.active]="isNameFieldInValid">
+      <p>
+        <strong *ngIf="nameField?.touched && nameField?.hasError('required')">Este campo es requerido</strong>
+      </p>
+      <p>
+        <strong *ngIf="nameField?.touched && nameField?.hasError('maxlength')">Maximo 10 caracteres</strong>
+      </p>
+    </div>
     <p>
-      <strong *ngIf="nameField?.dirty && nameField?.hasError('maxlength')">Maximo 10 caracteres</strong>
+      Text: {{lastField?.value}} {{lastField?.valid}}
+      <input
+      type="text"
+      formControlName="last">
     </p>
+    <div class="messages" [class.active]="isNameFieldInValid">
+      <p>
+        <strong *ngIf="nameField?.touched && nameField?.hasError('required')">Este campo es requerido</strong>
+      </p>
+      <p>
+        <strong *ngIf="nameField?.touched && nameField?.hasError('maxlength')">Maximo 10 caracteres</strong>
+      </p>
+    </div>
   </div>
+
   <p>
     Email: {{emailField?.value}}
     <input type="email" formControlName="email">

@@ -18,7 +18,10 @@ export class GroupFormComponent {
 
   private buildForm(){
     this.formGroup = this.formBuilder.group({
-      name : ['',[Validators.required, Validators.maxLength(10)]],
+      fullname: this.formBuilder.group({
+        name : ['',[Validators.required, Validators.maxLength(10)]],
+        last : ['',[Validators.required, Validators.maxLength(10)]]
+      }),
       email : [''],
       phone : [''],
       color : [''],
@@ -45,7 +48,11 @@ export class GroupFormComponent {
   }
 
   get nameField(){
-    return this.formGroup.get('name');
+    return this.formGroup.get('fullname.name');
+  }
+
+  get lastField(){
+    return this.formGroup.get('fullname.last');
   }
 
   get emailField(){
