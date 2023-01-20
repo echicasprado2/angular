@@ -41,7 +41,7 @@ export class GroupFormComponent {
 
   save(event:any){
     if(this.formGroup.valid){
-      console.log(this.formGroup);
+      console.log(this.formGroup.value);
     }else{
       this.formGroup.markAllAsTouched();
     }

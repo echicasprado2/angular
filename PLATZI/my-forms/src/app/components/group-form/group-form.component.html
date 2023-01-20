@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" (ngSubmit)="save($event)">
-  <div formGroupName="fullname"]>
+  <div formGroupName="fullname">
     <p>
       Text: {{nameField?.value}} {{nameField?.valid}}
       <input
@@ -24,10 +24,10 @@
     </p>
     <div class="messages" [class.active]="isNameFieldInValid">
       <p>
-        <strong *ngIf="nameField?.touched && nameField?.hasError('required')">Este campo es requerido</strong>
+        <strong *ngIf="lastField?.touched && lastField?.hasError('required')">Este campo es requerido</strong>
       </p>
       <p>
-        <strong *ngIf="nameField?.touched && nameField?.hasError('maxlength')">Maximo 10 caracteres</strong>
+        <strong *ngIf="lastField?.touched && lastField?.hasError('maxlength')">Maximo 10 caracteres</strong>
       </p>
     </div>
   </div>
