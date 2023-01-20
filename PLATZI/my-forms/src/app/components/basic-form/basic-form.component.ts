@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basic-form',
@@ -8,18 +8,18 @@ import { FormControl } from '@angular/forms';
 })
 export class BasicFormComponent {
 
-  nameField = new FormControl();
-  emailField = new FormControl();
-  phoneField = new FormControl();
-  colorField = new FormControl();
-  dateField = new FormControl();
-  numberField = new FormControl();
-  urlField = new FormControl();
-  rangeField = new FormControl();
-  timeField = new FormControl();
-  areaField = new FormControl();
-  categoryField = new FormControl();
-  tagsField = new FormControl();
+  nameField = new FormControl('',[Validators.required, Validators.maxLength(10)]);
+  emailField = new FormControl('');
+  phoneField = new FormControl('');
+  colorField = new FormControl('');
+  dateField = new FormControl('');
+  numberField = new FormControl(0);
+  urlField = new FormControl('');
+  rangeField = new FormControl('');
+  timeField = new FormControl('');
+  areaField = new FormControl('');
+  categoryField = new FormControl('');
+  tagsField = new FormControl('');
 
   agreeField = new FormControl(false);
   genderField = new FormControl('');
@@ -34,6 +34,14 @@ export class BasicFormComponent {
 
   getNameValue(){
     console.log(this.nameField.value);
+  }
+
+  get isNameFieldValid(){
+    return this.nameField.touched && this.nameField.valid;
+  }
+
+  get isNameFieldInValid(){
+    return this.nameField.touched && this.nameField.invalid;
   }
 
 }
