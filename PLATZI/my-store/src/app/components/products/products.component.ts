@@ -15,6 +15,7 @@ export class ProductsComponent {
   total = 0;
   products: Product[] = [];
   today = new Date();
+  showProductDetail = false;
 
   constructor(
     private myStoreService:StoreService,
@@ -33,6 +34,17 @@ export class ProductsComponent {
   onAddToShoppingCart(product: Product) {
     this.myStoreService.addProduct(product);
     this.total = this.myStoreService.getTotal();
+  }
+
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
+  }
+
+  onShowDetail(id: string) {
+    this.myProductService.getProduct(id)
+    .subscribe(data => {
+      console.log('product', data);
+    })
   }
 
 }
