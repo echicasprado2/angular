@@ -16,6 +16,17 @@ export class ProductsComponent {
   products: Product[] = [];
   today = new Date();
   showProductDetail = false;
+  productChosen: Product = {
+    id: '',
+    price: 0,
+    images: [],
+    title: '',
+    category: {
+      id: '',
+      name: '',
+    },
+    description: ''
+  };
 
   constructor(
     private myStoreService:StoreService,
@@ -41,9 +52,11 @@ export class ProductsComponent {
   }
 
   onShowDetail(id: string) {
+    console.log(id);
     this.myProductService.getProduct(id)
     .subscribe(data => {
-      console.log('product', data);
+      this.toggleProductDetail();
+      this.productChosen = data;
     })
   }
 
